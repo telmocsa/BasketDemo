@@ -2,7 +2,10 @@ name: Build and deploy .NET application to container app basketdemo-app-20240729
 on:
   push:
     branches:
-    - main
+    - master
+  pull_request:
+    branches:
+    - master
 env:
   CONTAINER_APP_CONTAINER_NAME: basketdemo
   CONTAINER_APP_NAME: basketdemo-app-20240729170021
