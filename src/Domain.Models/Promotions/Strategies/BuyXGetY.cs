@@ -4,7 +4,7 @@ using Domain.Models.Products;
 
 namespace Domain.Models.Promotions.Strategies
 {
-    public class BuyXGetY : Strategy
+    public class BuyXGetY : Promotion
     {
         public BuyXGetY(ICommandDispatcher commandDispatcher) : base(commandDispatcher)
         {
@@ -18,6 +18,8 @@ namespace Domain.Models.Promotions.Strategies
         {
             if(bagItem.Quantity >= BuyX)
             {
+                bagItem.AppliedPromotions.Append(this);
+
                 CommandDispatcher.Dispatch(
                     new AddItemCommand(
                         bagId, 

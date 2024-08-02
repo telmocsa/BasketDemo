@@ -22,7 +22,7 @@ namespace Domain.Services.Promotions
             {
                 if (promo.DependsOn.All(dep => VerifyDependency(bag, promo)))
                 {
-                    promo.Strategy.Apply(bag.Id, bagItem);
+                    promo.Apply(bag.Id, bagItem);
                 }
             }
         }
@@ -34,7 +34,7 @@ namespace Domain.Services.Promotions
         
         private bool VerifyDependency(Bag bag, Promotion promotion)
         {
-            
+            return bag.Items.Any(item => item.AppliedPromotions.Any(promo => promo == promotion));
         }
     }
 }

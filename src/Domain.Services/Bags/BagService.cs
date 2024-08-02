@@ -36,7 +36,7 @@ namespace Domain.Services.Bags
             bag.Items.Add(bagItem);
             var result = await bagRepository.Update(bag);
             
-            await promotionService.ApplyPromotions(bag.Id, bagItem);
+            await promotionService.ApplyPromotions(bag, bagItem);
 
             return result;
         }
@@ -50,7 +50,7 @@ namespace Domain.Services.Bags
 
         public async Task<bool> UpdateItem(Bag bag, BagItem bagItem)
         {
-            await promotionService.ApplyPromotions(bag.Id, bagItem);
+            await promotionService.ApplyPromotions(bag, bagItem);
 
             var changedItem = bag.Items.IndexOf(bagItem);
             
