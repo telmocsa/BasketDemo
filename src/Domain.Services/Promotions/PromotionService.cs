@@ -20,7 +20,7 @@ namespace Domain.Services.Promotions
             var promotions = await promotionRepository.Find(new Promotion { For = new[] { new Product { Id = bagItem.Product.Id } } }, DateTime.UtcNow);
             foreach (var promo in promotions)
             {
-                if (promo.DependsOn.All(dep => VerifyDependency(bag, promo)))
+                if (promo.DependsOn.All(dep => VerifyDependency(bag, dep)))
                 {
                     promo.Apply(bag.Id, bagItem);
                 }
@@ -34,7 +34,7 @@ namespace Domain.Services.Promotions
         
         private bool VerifyDependency(Bag bag, Promotion promotion)
         {
-            return bag.Items.Any(item => item.AppliedPromotions.Any(promo => promo == promotion));
+            return bag.Items.Any(item => item.AppliedPromotions.Any(promo => promo.Id == promotion.Id));
         }
     }
 }

@@ -19,7 +19,12 @@ namespace Domain.Models.Promotions.Strategies
 
         public override void Apply(Guid bagId, BagItem bagItem)
         {
-            bagItem.Product.Price.DiscountPrice = bagItem.Product.Price.BasePrice - (bagItem.Product.Price.BasePrice * Discount);
+            var discount = (bagItem.Product.Price.BasePrice * Discount);
+
+            bagItem.Product.Price.DiscountPrice = bagItem.Product.Price.DiscountPrice == 0 ? 
+                bagItem.Product.Price.BasePrice - discount : 
+                bagItem.Product.Price.DiscountPrice - discount;
+
             bagItem.AppliedPromotions.Add(this);
         }
     }

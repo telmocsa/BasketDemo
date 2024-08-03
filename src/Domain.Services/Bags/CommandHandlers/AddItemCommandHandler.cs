@@ -6,7 +6,7 @@ using Domain.Shared.Services.Products;
 
 namespace Domain.Services.Bags.CommandHandlers 
 {
-    internal class AddItemCommandHandler : ICommandHandler<AddItemCommand>
+    public class AddItemCommandHandler : ICommandHandler<AddItemCommand>
     {
         private readonly IBagService bagService;
         private readonly IProductService productService;
@@ -26,7 +26,7 @@ namespace Domain.Services.Bags.CommandHandlers
                 bag, 
                 new BagItem 
                 { 
-                    Id = Guid.NewGuid(),
+                    Id = command.BagItem.Id,
                     Product = CreateBagItemProduct(product.FirstOrDefault()),
                     Quantity = command.BagItem.Quantity                    
                 });
