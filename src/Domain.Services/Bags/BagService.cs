@@ -33,11 +33,11 @@ namespace Domain.Services.Bags
 
         public async Task<bool> AddItem(Bag bag, BagItem bagItem)
         {
+            await promotionService.ApplyPromotions(bag, bagItem);
+            
             bag.Items.Add(bagItem);
             var result = await bagRepository.Update(bag);
             
-            await promotionService.ApplyPromotions(bag, bagItem);
-
             return result;
         }
 
@@ -65,7 +65,7 @@ namespace Domain.Services.Bags
             return result;
         }
 
-        public async Task<Bag> Find(Bag bag) 
+        public async Task<Bag?> Find(Bag bag) 
         { 
             return await bagRepository.Find(bag);
         }

@@ -7,7 +7,7 @@ namespace Domain.Shared.Services.Bags
     {
         Task<Bag> Create(User user);
         
-        Task<Bag> Find(Bag bag);
+        Task<Bag?> Find(Bag bag);
 
         Task<bool> AddItem(Bag bag, BagItem bagItem);
 

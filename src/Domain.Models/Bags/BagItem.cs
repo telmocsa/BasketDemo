@@ -10,6 +10,6 @@ namespace Domain.Models.Bags
 
         public int Quantity { get; set; }
 
-        public IEnumerable<Promotion> AppliedPromotions { get; set; } = [];
+        public List<Promotion> AppliedPromotions { get; set; } = [];
     }
 }
