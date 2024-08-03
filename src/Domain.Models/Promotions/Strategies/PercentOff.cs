@@ -25,7 +25,7 @@ namespace Domain.Models.Promotions.Strategies
                 bagItem.Product.Price.BasePrice - discount : 
                 bagItem.Product.Price.DiscountPrice - discount;
 
-            bagItem.AppliedPromotions.Add(this);
+            base.Apply(bagId, bagItem);
         }
     }
 }

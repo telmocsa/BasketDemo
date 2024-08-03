@@ -18,7 +18,7 @@ namespace Domain.Models.Promotions.Strategies
         {
             if(bagItem.Quantity >= BuyX)
             {
-                bagItem.AppliedPromotions.Add(this);
+                base.Apply(bagId, bagItem);
 
                 CommandDispatcher.Dispatch(
                     new AddItemCommand(

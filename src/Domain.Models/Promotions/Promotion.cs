@@ -32,7 +32,7 @@ namespace Domain.Models.Promotions
         {
             if (bagItem != null)
             {
-                bagItem.AppliedPromotions.Append(this);
+                bagItem.AppliedPromotions.Add(this);
             }
         }
     }
