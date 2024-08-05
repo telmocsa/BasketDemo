@@ -2,7 +2,7 @@
 
 ## Design Considerations
 
-The follows a domain centric approach defining dependencies that would be injected with concrete instances from the outside. 
+This follows a domain centric approach defining dependencies that would be injected with concrete instances from the outside. 
 
 It works with and defines abstracted dependencies only implementing business rules. 
 
